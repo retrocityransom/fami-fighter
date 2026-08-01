@@ -27,8 +27,9 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 - Selectable autofire speed via hotkey combination
 - Optional NEOPIXEL LED support to visualize, if Turbo is active and at which speed
 - Easy to extend - change LED colors, use an OLED instead of the LED, add / change turbofire frequencies as required
+- Compatible with the Nintendo Four Score
 - Compatible with the SN30 2.4Ghz controller
-- Acts ~of course~ as a cable extension
+- Acts *of course* as a cable extension
 - Tested with several different controllers
 
 ### Shits
@@ -38,10 +39,10 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 
 ## In-game usage
 
-- SELECT + UP: Increase turbofire speed (LED colour becomes more intensive)
-- SELECT + DOWN: Decrease turbofire speed (LED colour becomes less intensive)
-- SELECT + LEFT: (De)Activate turbofire for button A
-- SELECT + RIGHT: (De)Activate turbofire for button B
+- SELECT + UP: Increase turbofire speed (LED colour becomes more intensive; if pressed when the highest frequency was already active, the cycle goes back at the lowest frequency)
+- SELECT + DOWN: Decrease turbofire speed (LED colour becomes less intensive; if pressed when the lowes frequency was already active, the highest freqency will be set active)
+- SELECT + RIGHT: (De)Activate turbofire for button A
+- SELECT + LEFT: (De)Activate turbofire for button B
 - If no turbo is activated, the LED glows green.
 - If both turbos (A+B) are activated, the LED glows purple.
 - If Turbo has been activated for button A, the LED has blue tone (or white, in the lowest frequency setting).
