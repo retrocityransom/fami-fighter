@@ -25,7 +25,7 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 - Very easy to build
 - Separate turbofire toggle for buttons A and B via hotkey combination
 - Selectable autofire speed via hotkey combination
-- Optional NEOPIXEL LED support to visualize, if Turbo is active and at which speed
+- Optional NEOPIXEL LED support to visualize, if turbofire is active and at which speed
 - Easy to extend - change LED colors, use an OLED instead of the LED, add / change turbofire frequencies as required
 - Compatible with the Nintendo Four Score
 - Compatible with the SN30 2.4Ghz controller
@@ -36,6 +36,12 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 
 - Not tested yet with the 8BitDo Retroreceiver, but will obtain one soon to test it
 - Not for people, who want a more advanced soldering project.
+
+## Important notice
+
+**Warning: Never connect two or more Turbo Boxes together. A Turbo Box must only be connected directly to the console or the multiplayer adapter.**
+
+Power supply: Please make sure that your power supply is adequately rated. In my testing, a 1.5 A power supply was sufficient to run two TBs with two 8BitDo N30 gamepads and two original NES controllers connected to a Four Score while using an Everdrive N8 Pro at the same time. Smaller power supplies may also work, but this has not been tested.
 
 ## In-game usage
 
@@ -65,9 +71,9 @@ The pictures provided here are not an implementation manual, but rather a person
 
 #### Optional to increase compatibility with Four Score (and because it's good practice anyway)
 
-- 1 x 10kO resistor required as pullup for console latch -> otherwise the Turbo Box will not work with a Four Score if not at least a second original NES controller has been plugged in
+- 1 x 10 kΩ resistor required as pullup for console latch -> otherwise the Turbo Box will not work with a Four Score if not at least a second original NES controller has been plugged in
 
-If that won't work for you, you can also add a 10k pullup to console clock.
+If that won't work for you, you can also add a 10k pullup to the Ardu's console clock pin.
 
 #### Optional (recommended)
 
@@ -75,14 +81,14 @@ If that won't work for you, you can also add a 10k pullup to console clock.
 - 1 × 10-position screw terminal block for Arduino
 - 1 × 12-position screw terminal block for Arduino
 - 1 x Schottky Diode (BAT85) -> add between Famicom/NES +5V line and Arduino VCC pin to protect the console
-- 1 x 100nF ceramic capacitor -> add between Arduino VCC and GND pin
+- 1 x 100 nF ceramic capacitor -> add between Arduino VCC and GND pin
 - 1 x 100 µF electrolytic capacitor next to the Ardu or between the GND and VCC rails, if you have them. Absolutely recommended, if you plan to use Bluetooth or 2.4 GHz adapters with the Turbo Box
-- 2 x 100 ohms resistors -> add one between console and Arduino in data line; add the other to the data line of the LED
+- 2 x 100 Ω resistors -> add one between console and Arduino in data line; add the other to the data line of the LED
 - Some printable sticker paper for stickers!! :-)
 
 ##### To combine GND lines and VCC lines
 
-- 1 x small Perfboard
+- 1 x small perfboard
 - 2 x 4 or 6-position screw terminal block
 - a few wire leades taken from a resistor, if available
 
@@ -104,15 +110,16 @@ If that won't work for you, you can also add a 10k pullup to console clock.
 | gamepad      | GND   | GND rail |                                                                |
 | console      | Clock | Ardu D12 |                                                                |
 | console      | Latch | Ardu D9  |                                                                |
-| console      | Data  | Ardu D11 | insert 100-ohm resistor                                        |
+| console      | Data  | Ardu D11 | insert 100 Ω resistor                                        |
 | console      | +5V   | VCC rail | insert Schottky diode (e.g. Bat-85); kathode points to Arduino |
 | console      | GND   | GND rail |                                                                |
-| Neopixel LED | Data  | Ardu A3  | insert 100-ohm resistor                                        |
+| Neopixel LED | Data  | Ardu A3  | insert 100 Ω resistor                                        |
 | Neopixel LED | +5V   | VCC rail |                                                                |
 | Neopixel LED | GND   | GND rail |                                                                |
 
-- Add 100nF ceramic capacitor between GND and VCC of Arduino
-- Add 100uF electrolytic capacitor between GND rail and VCC rail; mind the polarity
+- Add 100 nF ceramic capacitor between GND and VCC of Arduino
+- Add 100 µF electrolytic capacitor between GND rail and VCC rail; mind the polarity
+- Add a 10 kΩ pullup resistor between D9 (console latch) and VCC for increased Four Score compatibility
 
 ## Photo diary
 
@@ -134,7 +141,7 @@ If you want to install the RGB LED later, make a small 5-6mm hole in the lid.
 
 If you plan to use a ground rail and a 5V rail, which is highly recommended, then prepare a small piece of perfboard. I prefer using screw terminals here for easier handling and later modifications.
 
-**Also add a 100uF electrolytic cap to the board. I did this after some testing, as you will see later.**
+**Also add a 100 µF electrolytic cap to the board. I did this after some testing, as you will see later.**
 
 ![](media/photos/turbobox_assembly_20.jpg)
 
@@ -151,13 +158,13 @@ I connect the pins of each rail using two legs that I cut off from an old resist
 ![](media/photos/turbobox_assembly_29.jpg)
 
 - Then the NES controller extension cable is cut in the middle and the ends are stripped.
-- I extend the small wires with wires of the same color and, solder on a Schottky diode (+5V) or an 100 ohm resistor (data line). 
+- I extend the small wires with wires of the same color and, solder on a Schottky diode (+5V) or an 100 Ω resistor (data line). 
 - The solder joints and the soldered electronic components are protected with heat-shrink tubing.
 - For example, in the extension cable I used here, the +5V cable was blue and the ground cable was green.
 
 ![](media/photos/turbobox_assembly_30.jpg)
 
-My data cable turned out to be red, and here I soldered a 100 Ohm resistor into the wire coming from the console.
+My data cable turned out to be red, and here I soldered a 100 Ω resistor into the wire coming from the console.
 
 ![](media/photos/turbobox_assembly_34.jpg)
 
@@ -196,11 +203,11 @@ Okay, now all the wires are just slapped on. This is now very quick, because of 
 
 ![](media/photos/turbobox_assembly_58.jpg)
 
-And that's nearly it... I added a 100nF ceramic capacitor to the Arduino afterwards and made some more additions, as you will see.
+And that's nearly it... I added a 100 nF ceramic capacitor to the Arduino afterwards and made some more additions, as you will see.
 
 ![](media/photos/turbobox_assembly_64.jpg)
 
-After some testing, I've decided to add a 100uF electrolytic capacitor to the rail board.
+After some testing, I've decided to add a 100 µF electrolytic capacitor to the rail board.
 
 ![](media/photos/turbobox_assembly_70.jpg)
 
@@ -208,7 +215,7 @@ Some antistatic tape for isolation ...
 
 ![](media/photos/turbobox_assembly_72.jpg)
 
-Another late addition. To make the Turbo Box work on a Four Score adapter, I've added a 10k ohm resistor as pullup to the console latch pin of the Arduino (between Ardu console latch pin and VCC rail). If that should not work out for you, there's also still the option to do the same for console clock and console data, but it was not necessary in my cases.
+Another late addition. To make the Turbo Box work on a Four Score adapter, I've added a 10kΩ resistor as pullup to the console latch pin of the Arduino (between Ardu console latch pin and VCC rail). If that should not work out for you, there's also still the option to do the same for console clock and console data, but it was not necessary in my cases.
 
 ![](media/photos/turbobox_assembly_74.jpg)
 
@@ -216,11 +223,11 @@ Bam, there it is. The LED glows green when turbo fire is not activated.
 
 ![](media/photos/turbobox_assembly_90.jpg)
 
-Blue indicates that turbo is activated for button A ...
+Blue indicates that turbo is activated for button B ...
 
 ![](media/photos/turbobox_assembly_92.jpg)
 
-...and red indicates turbo fire for B.
+...and yellow/orange/red indicates turbo fire for A.
 
 ![](media/photos/turbobox_assembly_94.jpg)
 
