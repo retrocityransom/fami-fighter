@@ -37,13 +37,10 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 - Not tested yet with the 8BitDo Retroreceiver, but will obtain one soon to test it
 - Not for people, who want a more advanced soldering project.
 
-## Important notice
 
-**Warning: Never connect two or more Turbo Boxes together. A Turbo Box must only be connected directly to the console or the multiplayer adapter.**
+## Usage
 
-Power supply: Please make sure that your power supply is adequately rated. In my testing, a 1.5 A power supply was sufficient to run two TBs with two 8BitDo N30 gamepads and two original NES controllers connected to a Four Score while using an Everdrive N8 Pro at the same time. Smaller power supplies may also work, but this has not been tested.
-
-## In-game usage
+### In-game usage
 
 - SELECT + UP: Increase turbofire speed (LED colour becomes more intensive; if pressed when the highest frequency was already active, the cycle goes back at the lowest frequency)
 - SELECT + DOWN: Decrease turbofire speed (LED colour becomes less intensive; if pressed when the lowes frequency was already active, the highest freqency will be set active)
@@ -54,6 +51,10 @@ Power supply: Please make sure that your power supply is adequately rated. In my
 - If Turbo has been activated for button A, the LED has blue tone (or white, in the lowest frequency setting).
 - If Turbo has been activated for button B, the LED's color ranges between yellow and red.
 - The faster the selected turbofire speed, the more intensive the LED will glow.
+
+**Power supply**: Please make sure that your power supply is adequately rated. In my testing, a 1.5 A power supply was sufficient to run two TBs with two 8BitDo N30 gamepads and two original NES controllers connected to a Four Score while using an Everdrive N8 Pro at the same time. Smaller power supplies may also work, but this has not been tested.
+
+**Warning**: Never connect two or more Turbo Boxes together. A Turbo Box must only be connected directly to the console or the multiplayer adapter.
 
 ## Disclaimer
 
