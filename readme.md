@@ -10,6 +10,10 @@
 
 The "Fami-Fighter Turbo Box" is a solution for adding turbo-fire functionality to NES controllers at several selectable, preset speeds. Instead of modifying the controller itself, a small box containing an Arduino is simply connected between the controller and the NES or AV Famicom via an extension cable; this box then alters the controller signal according to the chosen turbo settings. The project is designed to use only a few electrical components and requires only minimal soldering. I have tested the box with a wide variety of games, including "Castlevania III" and "Journey to Silius," as these titles can sometimes be problematic when processing signals from DIY controllers.
 
+**Watch the teaser** on Youtube
+
+[![Video ansehen](https://img.youtube.com/vi/oQ01BThGukc/0.jpg)](https://www.youtube.com/watch?v=oQ01BThGukc)
+
 ## Why? Aren't there enough solutions already?
 
 Yes and no. Different games benefit from different autofire speeds, but if you're using for instance a Nintendo Four Score adapter or the 8BitDo N30 controller for turbo, the autofire rate is fixed and can't be adjusted. The NES Advantage arcade stick, on the other hand, lets you dial in the turbo speed to whatever works best for the game. But what if you simply want to use a standard NES controller, a PlayStation controller, or a proper arcade stick through a Bluetooth adapter such as the RetroReceiver?
