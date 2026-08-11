@@ -32,13 +32,13 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 - Optional NEOPIXEL LED support to visualize, if turbofire is active and at which speed
 - Easy to extend - change LED colors, use an OLED instead of the LED, add / change turbofire frequencies as required
 - Compatible with the Nintendo Four Score
-- Compatible with the SN30 2.4Ghz controller
+- Compatible with the SN30 2.4Ghz controller and Retroreceiver
 - Acts *of course* as a cable extension
 - Tested with several different controllers
 
 ### Shits
 
-- Not tested yet with the 8BitDo Retroreceiver, but will obtain one soon to test it
+- It could benefit from a hardware extension (similar to SNEngine) to behave more like 'real' hardware for timing-critical games. However, a friend of mine tested the box with Punch-Out!! and made it all the way to Mike Tyson without any issues.It could benefit from a hardware extension (similar to SNEngine) to offload the LATCH and CLOCK processing to an IC, making it behave more like 'real' hardware for timing-critical games. However, a friend of mine tested the box with Punch-Out!! and made it all the way to Mike Tyson without any issues.
 - Not for people, who want a more advanced soldering project.
 
 
