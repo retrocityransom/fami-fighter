@@ -38,7 +38,7 @@ That was exactly the goal of this project—so here it is: the Turbo Box.
 
 ### Shits
 
-- It could benefit from a hardware extension (similar to SNEngine) to behave more like 'real' hardware for timing-critical games. However, a friend of mine tested the box with Punch-Out!! and made it all the way to Mike Tyson without any issues.It could benefit from a hardware extension (similar to SNEngine) to offload the LATCH and CLOCK processing to an IC, making it behave more like 'real' hardware for timing-critical games. However, a friend of mine tested the box with Punch-Out!! and made it all the way to Mike Tyson without any issues.
+- It could benefit from a hardware extension (similar to SNEngine) to behave more like 'real' hardware for timing-critical games. However, a friend of mine tested the box with Punch-Out!! and made it all the way to Mike Tyson without any issues.
 - Not for people, who want a more advanced soldering project.
 
 
