@@ -73,7 +73,7 @@ The pictures provided here are not an implementation manual, but rather a person
 - 1 × NES extension cable
 - [The code from this repository](/files/code/)
 - The usual soldering equipment, cables, heat shrink tubes
-- Software: Arduino IDE
+- Software: Arduino IDE (+ Adafruit Neopixel library)
 - USB-To-TTL Adapter (e.g. IDUINO FT232)
 
 I have created an [Arduino howto-guide](/files/Fami-Fighter_flashing_instructions_for_Arduino.pdf), which helps you flashing the code to your Arduino Pro Mini.
