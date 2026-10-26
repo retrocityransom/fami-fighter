@@ -77,6 +77,7 @@ The pictures provided here are not an implementation manual, but rather a person
 - USB-To-TTL Adapter (e.g. IDUINO FT232)
 
 I have created an [Arduino howto-guide](/files/Fami-Fighter_flashing_instructions_for_Arduino.pdf), which helps you flashing the code to your Arduino Pro Mini.
+A different way to flash the code using a Diamex programmer has been found by n00b (CiBo). Some brief instructions can be found a the bottom of the page.
 
 #### Optional to increase compatibility with Four Score (and because it's good practice anyway)
 
@@ -86,14 +87,14 @@ If that won't work for you, you can also add a 10k pullup to the Ardu's console 
 
 #### Optional (recommended)
 
-- 1 x Neopixel RGB LED -> to indicate the chosen turbo speed and if turbo is inactive or active for A, B or both buttons
+- 1 x Addressable RGB LED (type WS2812b / Neopixel) -> to indicate the chosen turbo speed and if turbo is inactive or active for A, B or both buttons
 - 1 × 10-position screw terminal block for Arduino
 - 1 × 12-position screw terminal block for Arduino
-- 1 x Schottky Diode (BAT85) -> add between Famicom/NES +5V line and Arduino VCC pin to protect the console
+- 1 x Schottky Diode (BAT85 or BAT42) -> add between Famicom/NES +5V line and Arduino VCC pin to protect the console
 - 1 x 100 nF ceramic capacitor -> add between Arduino VCC and GND pin
 - 1 x 100 µF electrolytic capacitor next to the Ardu or between the GND and VCC rails, if you have them. Absolutely recommended, if you plan to use Bluetooth or 2.4 GHz adapters with the Turbo Box
 - 2 x 100 Ω resistors -> add one between console and Arduino in data line; add the other to the data line of the LED
-- Some printable sticker paper for stickers!! :-)
+- Some printable sticker paper for stickers!! :-) You can use this [template](/files/Sticker_template_(blank).xcf) to create your own.
 
 ##### To combine GND lines and VCC lines
 
@@ -110,21 +111,21 @@ If that won't work for you, you can also add a 10k pullup to the Ardu's console 
 
 ## Wiring
 
-| Side A       | Wire  | Side B   | Notes                                                          |
-| ------------ | ----- | -------- | -------------------------------------------------------------- |
-| gamepad      | Clock | Ardu D3  |                                                                |
-| gamepad      | Latch | Ardu D4  |                                                                |
-| gamepad      | Data  | Ardu D5  |                                                                |
-| gamepad      | +5V   | VCC rail |                                                                |
-| gamepad      | GND   | GND rail |                                                                |
-| console      | Clock | Ardu D12 |                                                                |
-| console      | Latch | Ardu D9  |                                                                |
-| console      | Data  | Ardu D11 | insert 100 Ω resistor                                        |
-| console      | +5V   | VCC rail | insert Schottky diode (e.g. Bat-85); kathode points to Arduino |
-| console      | GND   | GND rail |                                                                |
-| Neopixel LED | Data  | Ardu A3  | insert 100 Ω resistor                                        |
-| Neopixel LED | +5V   | VCC rail |                                                                |
-| Neopixel LED | GND   | GND rail |                                                                |
+| Side A                         | Wire  | Side B   | Notes                                                          |
+| ------------------------------ | ----- | -------- | -------------------------------------------------------------- |
+| gamepad                        | Clock | Ardu D3  |                                                                |
+| gamepad                        | Latch | Ardu D4  |                                                                |
+| gamepad                        | Data  | Ardu D5  |                                                                |
+| gamepad                        | +5V   | VCC rail |                                                                |
+| gamepad                        | GND   | GND rail |                                                                |
+| console                        | Clock | Ardu D12 |                                                                |
+| console                        | Latch | Ardu D9  |                                                                |
+| console                        | Data  | Ardu D11 | insert 100 Ω resistor                                          |
+| console                        | +5V   | VCC rail | insert Schottky diode (e.g. Bat-85); kathode points to Arduino |
+| console                        | GND   | GND rail |                                                                |
+| Addressable RGB (Neopixel) LED | Data  | Ardu A3  | insert 100 Ω resistor                                          |
+| Addressable RGB (Neopixel) LED | +5V   | VCC rail |                                                                |
+| Addressable RGB (Neopixel) LED | GND   | GND rail |                                                                |
 
 - Add 100 nF ceramic capacitor between GND and VCC of Arduino
 - Add 100 µF electrolytic capacitor between GND rail and VCC rail; mind the polarity
@@ -253,6 +254,51 @@ Added a finishing by printing out stickers on photo sticker paper.
 ![](media/photos/turbobox_assembly_99.jpg)
 
 ![](media/photos/turbobox_presentation3_small.jpg)
+
+## Contributions from n00b (circuit-board.de)
+
+n00b, a really nice admin-guy from CiBo implemented the Fami-Fighter going a slightly different route and kindly gave me the permission to add his insights and pics here.
+
+Main differences:
+
+- He used a **Diamex programmer** instead of the IDUINO FT232. So if you have one of those and don't want to buy the FT232, here's how to connect it:
+
+| Diamex Programmer | Arduino Pin |
+| ----------------- | ----------- |
+| MOSI              | 11          |
+| MISO              | 12          |
+| SCK               | 13          |
+| RESET             | RST         |
+| VCC               | VCC         |
+| GND               | GND         |
+
+Since the Arduino IDE won't work with this set-up, he has created a .hex file from the Ardu sketch file and flashed it by directly calling averdude.exe like this:
+
+```bash
+"C:\Users\UserXY\AppData\Local\Arduino15\packages\arduino\tools\avrdude\8.0.0-arduino1\bin\avrdude.exe" -C "C:\Users\UserXY\AppData\Local\Arduino15\packages\arduino\tools\avrdude\8.0.0-arduino1\etc\avrdude.conf" -c stk500v2 -p m328p -P COM8 -U flash:w:"C:\turbo_box__20260812.ino.hex":i
+```
+
+- Used a BAT42 instead of a BAT85 diode.
+- The FTDI programming header (serial programming header with pins for DTR, TXO, RXI, VCC, ...), which is required for the IDUINO FT232 to flash the code is partly occupied (VCC and GND, see photos below), because the DIAMEX programmer needs to be connected to other pins, instead.
+- VCC and GND have no extra board, hence the electrolytic capacitor was connected directly to the Ardu board.
+
+Thank you very much for your contributions!
+
+Here's the Diamex programmer
+
+![](media/photos/n00b_CiBo/Diamex_Programmer.jpg)
+
+All small electronic parts have been soldered directly to the Ardu.
+
+![](media/photos/n00b_CiBo/001.jpg)
+
+Then came the shrink tubes and the wiring. n00b kept the NES cables deliberately short.
+
+![](media/photos/n00b_CiBo/002.jpg)
+
+And here's the final result. Very nice, man!
+
+![](media/photos/n00b_CiBo/003.jpg)
 
 ## Last words
 
